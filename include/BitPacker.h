@@ -12,9 +12,16 @@ public:
     int byteIndex = startBit / 8;  // Index of the byte containing the start bit
     int bitIndex = startBit % 8;   // Bit position within the byte, with 0 being the left most bit
 
-    // if (BitPacker::isLittleEndian()) {
-    //     variable = swap(variable);
-    // }
+    // handle case where the length is greater than the number of bits remaining in the buffer
+    // this also handles the case where the startBit is greater than the buffer size
+    if (length > buffer.size() * 8 - startBit) {
+      return 0;
+    }
+
+    //handle case where the length is greater than the bits in the variable
+    if (length > sizeof(variable) * 8) {
+      return 0;
+    }
 
     // Encode the value by shifting bits and performing bitwise OR operations
     for (int i = 0; i < length; i++) {
