@@ -1,5 +1,7 @@
 #include <vector>
 #include "BitPacker.h"
+#include <cstddef>
+#include <cstring>
 int16_t BitPacker::swap(int16_t val)
 {
     return static_cast<int16_t>(((val & 0x00FF) << 8) |

@@ -2,6 +2,8 @@
 #include <type_traits>
 #include <cstdint>
 #include <vector>
+#include <cstddef>
+#include <cstring>
 class BitPacker {
 public:
 

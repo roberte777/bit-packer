@@ -13,9 +13,9 @@ int main() {
   int n = 1;
   // little endian if true
   if (*(char*)&n == 1) { 
-      std::cout << "This machine is little endian";
+      std::cout << "This machine is little endian" << std::endl;
   } else {
-    std::cout << "This machine is Big Endian";
+    std::cout << "This machine is Big Endian" << std::endl;
   }
 
   // First test: Just encode and decode 1, bytes from this uint16
