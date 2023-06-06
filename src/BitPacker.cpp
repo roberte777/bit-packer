@@ -4,7 +4,7 @@
 #include <cstring>
 
 size_t BitPacker::decode(const std::vector<std::byte>& buffer, size_t startBit, size_t length) {
-    unsigned int value = 0;
+    size_t value = 0;
     int byteIndex = startBit / 8;  // Index of the byte containing the start bit
     int bitIndex = startBit % 8;   // Bit position within the byte, assuming the left most bit is idx 0
 

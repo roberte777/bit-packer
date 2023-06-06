@@ -46,7 +46,7 @@ TEST_CASE("Encode and decode across bytes", "[tag]") {
   //0000111111111111
   uint16_t full = 4095;
   char c = 'a';
-  int8_t i = -7;
+  int8_t i = -15;
 
   // vector has 40 bits
   std::vector<std::byte> testVector(5);
@@ -61,4 +61,14 @@ TEST_CASE("Encode and decode across bytes", "[tag]") {
   REQUIRE(basicTestValue == full);
   REQUIRE(outC == c);
   REQUIRE(outI == i);
+}
+TEST_CASE("Encode and decode values larger than 16 bits", "[BitPacker]"){
+  int32_t full = 33554431;
+
+  std::vector<std::byte> testVector(5);
+  BitPacker::encode(full, 0, 25, testVector);
+
+  size_t basicTestValue = BitPacker::decode(testVector, 0, 25);
+
+  REQUIRE(basicTestValue == full);
 }
